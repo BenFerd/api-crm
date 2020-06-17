@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Pagination from '../components/Pagination';
 import InvoicesAPI from '../services/invoicesAPI';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 
 const STATUS_CLASSES = {
@@ -81,7 +82,10 @@ const InvoicesPage = (props) => {
 
     return (
     <>
-        <h1>Liste des factures</h1>
+        <div className="d-flex justify-content-between align-items-center">
+            <h1>Liste des factures</h1>
+            <Link to="/invoice/new" className="btn btn-primary">Ajouter une facture</Link>
+        </div>
 
         <div className="form-group">
             <input type="text" onChange={handleSearch} value={search} className="form-control" placeholder="Rechercher ..."/>

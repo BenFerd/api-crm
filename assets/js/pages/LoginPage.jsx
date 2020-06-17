@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import authAPI from '../services/authAPI';
 import AuthContext from '../context/AuthContext';
+import Field from '../components/forms/Field';
 
 const LoginPage = ({ history }) => {
 
@@ -38,29 +39,11 @@ const LoginPage = ({ history }) => {
         <h1>Connexion</h1>
 
         <form onSubmit={handleSubmit}>
-            <div className="form-group">
-                <label htmlFor="username">Adresse email</label>
-                <input 
-                    onChange={handleChange}
-                    value={credentials.username} 
-                    type="email" 
-                    placeholder="harry.potter@poudlard.uk" 
-                    name="username" 
-                    id="username" 
-                    className={"form-control" + (error && " is-invalid")}/>
-                    {error && <p className="invalid-feedback">{error}</p>}
-            </div>
-            <div className="form-group">
-                <label htmlFor="password"></label>
-                <input 
-                    onChange={handleChange}
-                    value={credentials.password} 
-                    type="password" 
-                    placeholder="Bière au beurre" 
-                    name="password" 
-                    id="password" 
-                    className="form-control"/>
-            </div>
+            <Field label="Adresse email" name="username" value={credentials.username} onChange={handleChange}
+                placeholder="harry.potter@Hogward.uk" error={error}/>
+            <Field label="password" name="password" value={credentials.password} type="password" placeholder="Bière au beurre"
+                onChange={handleChange}/>
+
             <div className="form-group"><button type="submit" className="btn btn-success">Connexion</button></div>
         </form>
     </>
